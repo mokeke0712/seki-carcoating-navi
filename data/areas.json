@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "seki",
+    "name": "関市",
+    "pref": "岐阜県",
+    "neighbors": ["gifu", "mino", "kakamigahara"],
+    "intro": "刃物のまち関市。国道248号・東海環状道関ICの周辺を中心に、KeePer PROSHOPから専門店まで選択肢が揃っています。"
+  },
+  {
+    "slug": "gifu",
+    "name": "岐阜市",
+    "pref": "岐阜県",
+    "neighbors": ["seki", "kakamigahara"],
+    "intro": "県庁所在地の岐阜市。店舗数が多く、メニューや価格帯の選択肢が広いエリアです。"
+  },
+  {
+    "slug": "mino",
+    "name": "美濃市",
+    "pref": "岐阜県",
+    "neighbors": ["seki"],
+    "intro": "関市の北に隣接する美濃市。関市の店舗と合わせて検討する方が多いエリアです。"
+  },
+  {
+    "slug": "kakamigahara",
+    "name": "各務原市",
+    "pref": "岐阜県",
+    "neighbors": ["seki", "gifu"],
+    "intro": "岐阜市と関市の間に位置する各務原市。通勤経路で預けやすい店舗を選べます。"
+  }
+]
