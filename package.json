@@ -1,0 +1,13 @@
+{
+  "name": "carcoating-navi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.js",
+    "preview": "npm run build && npx --yes serve dist"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}
