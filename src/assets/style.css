@@ -1,0 +1,131 @@
+/* ==========================================================
+   岐阜カーコーティング比較ナビ 共通スタイル
+   コンセプト：コーティング被膜の「艶」を示すグロスライン ＋ 読みやすい比較表
+   ========================================================== */
+:root {
+  --ink: #1c2733;         /* 本文 */
+  --ink-soft: #51606f;    /* 補助テキスト */
+  --base: #f5f7f9;        /* 背景 */
+  --panel: #ffffff;       /* カード */
+  --lacquer: #0f3554;     /* 深い塗装ネイビー（主色） */
+  --gloss: #37a6c4;       /* 被膜の艶シアン（アクセント） */
+  --amber: #c98a1b;       /* ランキング・強調 */
+  --line: #dde4ea;
+  --gloss-bar: linear-gradient(90deg, var(--lacquer) 0%, var(--gloss) 45%, #bfe8f2 60%, var(--gloss) 75%, var(--lacquer) 100%);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--base);
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+  font-size: 16px;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+a { color: var(--lacquer); }
+a:hover { color: var(--gloss); }
+:focus-visible { outline: 3px solid var(--gloss); outline-offset: 2px; }
+
+/* ---- ヘッダー ---- */
+.site-header { background: var(--panel); border-bottom: 1px solid var(--line); position: relative; }
+.site-header::before { content: ""; display: block; height: 4px; background: var(--gloss-bar); }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding-top: 12px; padding-bottom: 12px; }
+.brand { font-weight: 700; font-size: 1.05rem; text-decoration: none; color: var(--lacquer); letter-spacing: .02em; }
+.global-nav { margin-left: auto; display: flex; gap: 16px; font-size: .9rem; }
+.global-nav a { text-decoration: none; color: var(--ink-soft); }
+.global-nav a:hover { color: var(--gloss); }
+
+/* ---- パンくず ---- */
+.breadcrumb { font-size: .8rem; color: var(--ink-soft); margin: 12px 0 0; }
+.breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 4px; margin: 0; padding: 0; }
+.breadcrumb li + li::before { content: "›"; margin: 0 6px; color: var(--line); }
+.breadcrumb a { color: var(--ink-soft); }
+
+/* ---- 見出し・本文 ---- */
+main { padding: 8px 0 56px; }
+h1 { font-size: 1.6rem; line-height: 1.4; margin: 24px 0 12px; letter-spacing: .01em; }
+h2 { font-size: 1.25rem; margin: 44px 0 12px; padding-left: 12px; border-left: 4px solid var(--gloss); }
+h3 { font-size: 1.05rem; margin: 20px 0 8px; }
+.eyebrow { color: var(--gloss); font-weight: 700; font-size: .8rem; letter-spacing: .12em; margin: 24px 0 0; }
+.eyebrow + h1 { margin-top: 4px; }
+.lead { color: var(--ink-soft); }
+.small { font-size: .8rem; color: var(--ink-soft); }
+
+/* ---- ヒーロー ---- */
+.hero { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 32px 24px; margin-top: 24px; position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: var(--gloss-bar); }
+.hero h1 { margin-top: 4px; }
+
+/* ---- ボタン ---- */
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+.btn { display: inline-block; background: var(--lacquer); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: .95rem; }
+.btn:hover { background: var(--gloss); color: #fff; }
+.btn-sub { background: var(--panel); color: var(--lacquer); border: 1.5px solid var(--lacquer); }
+.btn-sub:hover { border-color: var(--gloss); color: var(--gloss); background: var(--panel); }
+
+/* ---- カード ---- */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 18px 14px; position: relative; overflow: hidden; }
+.card::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--gloss-bar); opacity: .85; }
+.card h3 { margin-top: 6px; }
+.card h3 a { text-decoration: none; }
+.card-summary { font-size: .9rem; color: var(--ink-soft); }
+.card-area { font-size: .8rem; color: var(--ink-soft); margin: 0; }
+.card-more { text-align: right; font-size: .9rem; margin-bottom: 0; }
+.rank-label { display: inline-block; margin: 0; background: var(--amber); color: #fff; font-size: .75rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; }
+
+/* ---- バッジ ---- */
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.badge { background: #e8f4f8; color: var(--lacquer); border: 1px solid #cde7ef; font-size: .75rem; padding: 2px 10px; border-radius: 999px; }
+
+/* ---- テーブル ---- */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; background: var(--panel); font-size: .9rem; }
+.compare-table th, .compare-table td, .menu-table th, .menu-table td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+.compare-table thead th, .menu-table thead th { background: var(--lacquer); color: #fff; white-space: nowrap; }
+.compare-table tbody tr:nth-child(even), .menu-table tbody tr:nth-child(even) { background: #fafcfd; }
+.compare-table { min-width: 720px; }
+.info-table { border: 1px solid var(--line); }
+.info-table th { background: #eef3f7; width: 8em; padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); font-weight: 600; }
+.info-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+
+/* ---- 店舗ページ ---- */
+.feature-list { padding-left: 1.2em; }
+.feature-list li { margin: 6px 0; }
+.howto { padding-left: 1.4em; }
+.howto li { margin: 10px 0; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.gallery-grid img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+.review { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--gloss); border-radius: 8px; margin: 12px 0; padding: 12px 16px; }
+.review-meta { color: var(--ink-soft); font-size: .85rem; margin: 0 0 4px; }
+.stars { color: var(--amber); letter-spacing: 2px; }
+.faq { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; margin: 8px 0; padding: 10px 16px; }
+.faq summary { font-weight: 700; cursor: pointer; }
+.faq p { margin: 8px 0 4px; color: var(--ink-soft); }
+
+/* ---- 関連リンク ---- */
+.related { margin-top: 48px; }
+.rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.rel-block { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+.rel-block h3 { margin: 4px 0 8px; font-size: .95rem; color: var(--lacquer); }
+.rel-block ul { margin: 0; padding-left: 1.2em; font-size: .9rem; }
+.rel-block li { margin: 6px 0; }
+.inline-links { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; padding: 0; }
+.inline-links a { display: inline-block; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; font-size: .9rem; text-decoration: none; }
+.inline-links a:hover { border-color: var(--gloss); }
+
+/* ---- フッター ---- */
+.site-footer { background: var(--lacquer); color: #cfdce6; margin-top: 40px; padding: 28px 0; font-size: .85rem; }
+.site-footer::before { content: ""; display: block; height: 4px; background: var(--gloss-bar); margin-top: -28px; margin-bottom: 24px; }
+.site-footer a { color: #fff; }
+.site-footer .copy { margin-bottom: 0; opacity: .8; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.35rem; }
+  .global-nav { width: 100%; gap: 12px; }
+}
