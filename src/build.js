@@ -110,7 +110,7 @@ writePage("criteria.html", simplePage({
 }));
 urls.push({ path: "criteria.html", priority: "0.3" });
 
-writePage("404.html", notFoundPage({ site }));
+writePage("404.html", notFoundPage({ site, stores }));
 
 /* ---- 5. サイトマップ ---- */
 writeSitemap(site, urls);
