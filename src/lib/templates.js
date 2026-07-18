@@ -340,7 +340,18 @@ export function simplePage({ site, title, urlPath, bodyHtml, depth = 0 }) {
   return layout({ site, head, breadcrumbHtml: bc.html, main: `<h1>${esc(title)}</h1>${bodyHtml}`, depth });
 }
 
-export function notFoundPage({ site }) {
+export function notFoundPage({ site, stores = [] }) {
+  const slugs = JSON.stringify((stores || []).map((s) => s.slug));
   const head = headTag({ site, title: `ページが見つかりません｜${site.siteName}`, description: "お探しのページは見つかりませんでした。", urlPath: "404.html", depth: 0 });
-  return layout({ site, head, main: `<h1>ページが見つかりません</h1><p>URLが変更されたか、削除された可能性があります。<a href="./">トップページ</a>からお探しください。</p>`, depth: 0 });
+  const redirectScript = `<script>
+(function () {
+  var base = ${JSON.stringify(site.baseUrl)};
+  var slugs = ${slugs};
+  var seg = location.pathname.replace(/\\/+\$/, "").split("/").pop().replace(/\\.html\$/, "");
+  var target = base + "/";
+  if (slugs.indexOf(seg) >= 0) target = base + "/stores/" + seg + "/";
+  location.replace(target);
+})();
+<\/script>`;
+  return layout({ site, head, main: `${redirectScript}<h1>ページが見つかりません</h1><p>URLが変更されたか、削除された可能性があります。自動的に移動します。移動しない場合は<a href="./">トップページ</a>からお探しください。</p>`, depth: 0 });
 }
